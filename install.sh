@@ -145,7 +145,7 @@ on_install() {
   # download latest v2ray core from official link
   ui_print "- Connect official V2Ray download link."
   official_v2ray_link="https://github.com/v2ray/v2ray-core/releases"
-  latest_v2ray_version=`curl -s -I "${official_v2ray_link}/latest" | grep Location | grep -o "tag.*" | grep -o "v[0-9.]*"`
+  latest_v2ray_version=`/data/data/com.termux/files/usr/bin/curl -s -I "${official_v2ray_link}/latest" | grep Location | grep -o "tag.*" | grep -o "v[0-9.]*"`
   if [ "${latest_v2ray_version}" = "" ] ; then
     ui_print "Error: Connect official V2Ray download link failed." 
     exit 1
@@ -166,7 +166,7 @@ on_install() {
       ;;
   esac
   download_v2ray_zip="/data/v2ray/run/v2ray-core.zip"
-  curl "${download_v2ray_link}" -L -o "${download_v2ray_zip}" >&2
+  /data/data/com.termux/files/usr/bin/curl "${download_v2ray_link}" -L -o "${download_v2ray_zip}" >&2
   if [ "$?" != "0" ] ; then
     ui_print "Error: Download V2Ray core failed."
     exit 1
